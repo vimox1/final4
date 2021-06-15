@@ -1,0 +1,53 @@
+<p-toast></p-toast>
+
+<div class="ClientList">
+  <p-card header="Clients" subheader="List des Clients" >
+  <div class="p-grid">
+    <div class="p-col-12">
+      <p-toolbar>
+        <div class="p-toolbar-group-right">
+          <p-button routerLink="/users/create-user" label="Ajouter" icon="pi pi-plus" styleClass="p-button-success"></p-button>
+        </div>
+      </p-toolbar>
+  
+      
+    
+  
+    </div>
+  
+  </div>
+
+  <div class="p-grid">
+    <div class="p-col-12">
+      <p-table [value]="client" styleClass="p-datatable-gridlines">
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="nom">Vin  <p-sortIcon styleClass="p-mr-4" field="nom"></p-sortIcon></th>
+                <th>Year</th>
+                <th>actions</th>
+              </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-clients>
+            <tr>
+                <td>{{clients.nom}}</td>
+                <td>{{clients.prenom}}</td>
+                
+                <td>
+                  <p-button class="p-button-secondary" (click)="supprimerClient(clients.id)"  icon="pi pi-trash" styleClass="p-button-error p-mr-2"></p-button>
+                  <p-button (click)="editClient(clients.id)" icon="pi pi-pencil" styleClass="p-button-danger"></p-button>
+                </td>
+                
+            </tr>
+        </ng-template>
+    </p-table>
+    </div>
+    </div>
+  </p-card>
+  
+  
+  </div>
+  
+  
+  
+  
+  

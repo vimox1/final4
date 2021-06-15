@@ -1,0 +1,135 @@
+<p-toast></p-toast>
+<div class="admin-page">
+  <p-card
+    [header]="editmode ? 'Edit Product' : 'Add Product'"
+    subheader="You can add or edit products here"
+  >
+    <div class="p-grid p-mb-5">
+      <div class="p-col-12">
+        <p-toolbar>
+          <div class="p-toolbar-group-left"></div>
+          <div class="p-toolbar-group-right">
+            <p-button
+              styleClass="p-button-primary p-mr-2"
+              [label]="editmode ? 'Update' : 'Create'"
+              icon="pi pi-plus"
+             (click)="onSubmit()"
+            ></p-button>
+            <p-button
+              styleClass="p-button-secondary"
+              label="Cancle"
+              icon="pi pi-arrow-circle-left"
+            ></p-button>
+          </div>
+        </p-toolbar>
+      </div>
+    </div>
+    <div class="p-grid">
+      <div class="p-col-12">
+        <form [formGroup]="ajouterProduit">
+          <div class="p-fluid p-formgrid p-grid">
+            <div class="p-field p-col">
+              <label for="nomProduit">Nom de Produit</label>
+              <input formControlName="nomProduit"  type="text" pInputText />
+              <small *ngIf="ajouterProduit.controls.nomProduit.invalid && isSubmitted" class="p-error">Name is required</small>
+            </div>
+            <div class="p-field p-col">
+              <label for="refProduit">Ref De Produit</label>
+              <input formControlName="refProduit" id="refProduit" type="text" pInputText />
+              <small *ngIf="ajouterProduit.controls.refProduit.invalid && isSubmitted" class="p-error">Brand is required</small>
+            </div>
+            <div class="p-field p-col">
+                <label for="refFourni">Ref De Fournisseur</label>
+                <input formControlName="refFourni" id="refFourni" type="text" pInputText />
+                <small *ngIf="ajouterProduit.controls.refFourni.invalid && isSubmitted" class="p-error">Brand is required</small>
+            </div>
+            
+          </div>
+          <div class="p-fluid p-formgrid p-grid">
+            <div class="p-field p-col-4">
+                <label for="price">Prix De Vente</label><br />
+                <p-inputNumber formControlName="priceDeVente" mode="decimal" [useGrouping]="false">
+                </p-inputNumber>
+                <small *ngIf="ajouterProduit.controls.priceDeVente.invalid && isSubmitted" class="p-error">Price is required</small>
+              </div>
+              <div class="p-field p-col-4">
+                <label for="priceDachat">Prix D'Achat'</label><br />
+                <p-inputNumber formControlName="priceDachat" mode="decimal" [useGrouping]="false">
+                </p-inputNumber>
+                <small *ngIf="ajouterProduit.controls.priceDachat.invalid && isSubmitted" class="p-error">Price is required</small>
+              </div>
+              <div class="p-field p-col-4">
+                <label for="tva">TVA</label><br />
+                <p-inputNumber formControlName="tva" mode="decimal" [useGrouping]="false">
+                </p-inputNumber>
+                <small *ngIf="ajouterProduit.controls.tva.invalid && isSubmitted" class="p-error">Price is required</small>
+              </div>
+              
+            
+          </div>
+          <div class="p-fluid p-formgrid p-grid">
+            <div class="p-field p-col-4">
+              <label for="category">category</label><br />
+              <p-dropdown
+                [options]="categories"
+                formControlName="category"
+                optionLabel="nomCategory"
+                optionValue="id"
+                [filter]="true"
+                filterBy="nomCategory"
+                [showClear]="true"
+                placeholder="Select a Category"
+              ></p-dropdown>
+
+              <small *ngIf="ajouterProduit.controls.category.invalid && isSubmitted" class="p-error"
+                >Category is required</small
+              >
+            </div>
+              <div class="p-field p-col-4">
+                <label for="numSurStock">En Stock</label><br />
+                <p-inputNumber formControlName="numSurStock" mode="decimal" [useGrouping]="false">
+                </p-inputNumber>
+                <small *ngIf="ajouterProduit.controls.numSurStock.invalid && isSubmitted" class="p-error">Price is required</small>
+              </div>
+              <div class="p-field p-col-4">
+                <label for="benefice">Profit</label><br />
+                <input  pInputText [value]="leGain()"  mode="decimal" >
+              
+              </div>
+              
+              
+              
+              <div class="p-field p-col-12">
+                <label for="description">Description</label><br />
+                <textarea
+                  pInputTextarea
+                  formControlName="description"
+                  [rows]="7"
+                  [cols]="30"
+                ></textarea>
+                <small *ngIf="ajouterProduit.controls.description.invalid && isSubmitted" class="p-error"
+                  >Description is required</small
+                >
+              </div>
+              <div class="p-field p-col-12">
+                <label for="name">Main Image</label>
+                <input
+                  type="file"
+                  class="p-inputtext"
+                  accept="image/*"
+                  (change)="telechargerImage($event)"
+                />
+                
+                <div class="p-col-2 p-mt-2 p-pl-0">
+                  <img style="width: 100%" [src]="imageTelecharge" alt="" />
+                </div>
+              </div>
+            
+          </div>
+          
+          
+        </form>
+      </div>
+    </div>
+  </p-card>
+</div>

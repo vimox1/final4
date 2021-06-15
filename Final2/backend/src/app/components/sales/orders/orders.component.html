@@ -1,0 +1,172 @@
+
+
+
+<div class="col mb-3">
+  <p-card>
+  <div class="col-md-12">
+    <div class="col-md-12 mb-3 mt-3">
+      <h2>Ajouter une commande </h2>
+    </div>
+    <div class="row p-3 custom-border">
+      <div class="col-md-5 custom-border-right">
+        <h2>Check Client info </h2>
+          <div class="form-group">
+            <select class="form-control" name="cltFrs" [(ngModel)]="selectedClient" >
+              <option>Selectionner un client</option>
+              <option *ngFor="let obj of client" [ngValue]="obj" >
+                {{ obj.nom }}&nbsp;{{ obj.prenom }}
+              </option>
+            </select>
+          </div>
+        
+      </div>
+      <div class="col-md-5 custom-border-right" >
+        <div class="col">
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10"> &nbsp;</div>
+          </div>
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">Nom de Client: {{selectedClient.nom}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">Prenom de Client: {{selectedClient.prenom}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">Ref Client: {{selectedClient.refclient}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">email Client: {{selectedClient.fonction}}</div>
+          </div>
+          
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="row p-3 custom-border">
+      <div class="col-md-5 custom-border-right">
+        <h2>Check Client info </h2>
+          <div class="form-group">
+            <select class="form-control" name="cltFrs" [(ngModel)]="selectedProduct" >
+              <option>Selectionner un client</option>
+              <option *ngFor="let pro of product" [ngValue]="pro" >
+                {{ pro.nomProduit }}
+              </option>
+            </select>
+          </div>
+        
+      </div>
+      <div class="col-md-5 custom-border-right" >
+        <div class="col">
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10"> &nbsp;</div>
+          </div>
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">nom de Client: {{selectedProduct.refProduit}} </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">image: <img style="width: 10%" [src]="selectedProduct.image" alt="" />  </div>        
+          </div>
+
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">quantity disponible: {{selectedProduct.numSurStock}}</div>
+          </div>
+
+          
+         
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-grid">
+    <div class="p-col-12">
+      <form [formGroup]="ajoutercmd">
+      <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col-6">
+          <label for="client"></label><br />
+          <p-dropdown
+            [options]="client"
+            formControlName="choosedclient"
+            optionLabel="refclient"
+            optionValue="id"
+            [filter]="true"
+            filterBy="refclient"
+            [showClear]="true"
+            placeholder="Choisir Un Client"
+          ></p-dropdown>
+        
+          
+        </div>
+        <div class="p-field p-col-6">
+          <label for="product"></label><br />
+          <p-dropdown
+            [options]="product"
+            formControlName="choosedproduct"
+            optionLabel="nomProduit"
+            optionValue="id"
+            [filter]="true"
+            filterBy="nomProduit"
+            [showClear]="true"
+            placeholder="Choisir Un Produit"
+          ></p-dropdown>
+        
+          
+        </div>
+
+        <div class="p-field p-col-4">
+          <label for="price">Prix De Vente</label><br />
+          <p-inputNumber formControlName="prixcmd" mode="decimal" [useGrouping]="false">
+          </p-inputNumber>
+        </div>
+
+          
+          <div class="p-field p-col-4">
+            <label for="price">quantity</label><br />
+            <p-inputNumber formControlName="qtycmd" mode="decimal" [useGrouping]="false">
+            </p-inputNumber>
+          </div>
+
+          <div class="p-field p-col-4">
+            <label for="price">total prix</label><br />
+            <p-inputNumber formControlName="qtycmd" mode="decimal" [useGrouping]="false">
+            </p-inputNumber>
+          </div>
+        
+          
+        
+      </div>  
+    </form> 
+    </div>  
+  </div>
+
+  <div class="col-md-12 text-right mt-2">
+    <button class="btn btn-danger mr-3">
+      Annuler
+    </button>
+    <button (click)="submit()" class="btn btn-primary" >
+      Enregitrer
+    </button>
+  </div>
+</p-card>
+
+</div>
+
+
+
+
+
+
+
+
+
+

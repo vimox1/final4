@@ -1,0 +1,80 @@
+<!-- Container-fluid starts-->
+<p-toast></p-toast>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Products Category</h5>
+                </div>
+                <div class="card-body">
+                    <div class="btn-popup pull-right">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-original-title="test"
+                            data-target="#exampleModal" (click)="open(content)">Add Category</button>
+                        <ng-template #content let-modal>
+                            <div class="modal-header">
+                                <h5 class="modal-title f-w-600" id="exampleModalLabel">Add Physical Product</h5>
+                                <button type="button" class="close" aria-label="Close"
+                                    (click)="modal.dismiss('Cross click')" >
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p-toast></p-toast>
+                                <form [formGroup]="ajouterCategory">
+                                    <div >
+                                        <div class="form-group">
+                                            <label for="validationCustom01" class="mb-1">Category Name :</label>
+                                            <input class="form-control" formControlName="nomCategory" type="text">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="validationCustom01" class="mb-1">Category num :</label>
+                                            <input class="form-control" formControlName="numCategory" type="text">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" (click)="onSubmit()">Save</button>
+                                <button class="btn btn-secondary" type="button" data-dismiss="modal"
+                                    (click)="modal.dismiss('Cross click')">Close</button>
+                            </div>
+                        </ng-template>
+                    </div>
+                    <div id="batchDelete" class="category-table custom-datatable">
+                        <div class="table-responsive">
+                            <div class="p-grid">
+                                <div class="p-col-12">
+                                  <p-table [value]="categori" styleClass="p-datatable-gridlines">
+                                    <ng-template pTemplate="header">
+                                        <tr>
+                                            <th pSortableColumn="nom">Vin  <p-sortIcon styleClass="p-mr-4" field="nom"></p-sortIcon></th>
+                                            <th>Year</th>
+                                            <th>actions</th>
+                                          </tr>
+                                    </ng-template>
+                                    <ng-template pTemplate="body" let-categories>
+                                        <tr>
+                                            <td>{{categories.numCategory}}</td>
+
+                                            <td>{{categories.nomCategory}}</td>
+                                            
+                                            <td>
+                                              <p-button class="p-button-secondary" (click)="supprimerCategory(categories.id)"  icon="pi pi-trash" styleClass="p-button-error p-mr-2"></p-button>
+                                            </td>
+                                            
+                                        </tr>
+                                    </ng-template>
+                                </p-table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->

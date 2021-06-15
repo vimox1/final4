@@ -1,0 +1,30 @@
+<p-toast></p-toast>
+<div class="admin-page" *ngIf="produit">
+  <p-card [header]="'View Order'" subheader="You can edit order status here">
+    <p-fieldset legend="Order Details" styleClass="p-mb-4" [toggleable]="true">
+      <div class="p-grid">
+        <div class="p-col-4">
+                    <h5> product name</h5>
+                    <p>{{produit.priceDeVente}}</p>
+                </div>
+                <div class="p-col-4">
+                    <h5> product name</h5>
+                    <p>{{produit.dateCreation}}</p>
+                </div>
+                <div class="p-col-4">
+                    <h5> product name</h5>
+                    <p>{{produit.dateCreation}}</p>
+                </div>
+                <div class="p-col-4">
+                    <h5> product name</h5>
+                    <p>{{produit.dateCreation}}</p>
+                </div>
+
+
+
+            </div>
+        </p-fieldset>
+
+    </p-card>
+
+</div>
